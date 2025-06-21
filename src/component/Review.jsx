@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 
 const Review = () => {
   const [input, setInput] = useState({
-    name: "",
-    message: "",
-    date: "",
-    rating: "",
+     name: "",  message: "",  date: "", rating: ""
   });
 
   const [errors, setErrors] = useState({});
@@ -65,63 +62,29 @@ const Review = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 text-white p-4">
       <div className={`flex w-full max-w-5xl gap-10 flex-col md:flex-row ${submittedData.length === 0 ? "justify-center items-center" : ""}`}>
-
-       
         <form onSubmit={handleSubmit} className="bg-gray-900 border border-gray-700 p-6 rounded-xl w-full max-w-md shadow-xl">
           <div className="text-center mb-6">
             <h2 className="text-yellow-400 text-xl font-semibold">Clients</h2>
             <h1 className="text-3xl font-bold">FEEDBACK</h1>
           </div>
-
           <div className="mb-4">
             <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-            <input
-              type="text"
-              id="name"
-              value={input.name}
-              onChange={handleChange}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"
-              placeholder="Your Name"
-            />
-            {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
+            <input type="text"  id="name"  value={input.name} onChange={handleChange} className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white" placeholder="Your Name" />
+              {errors.name && <p className="text-sm text-red-500">{errors.name}</p>}
           </div>
-       
           <div className="mb-4">
             <label htmlFor="message" className="block text-sm font-medium mb-1">Review</label>
-            <textarea
-              id="message"
-              value={input.message}
-              onChange={handleChange}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"
-              rows={4}
-              placeholder="Your Comment"
-            />
+            <textarea id="message" value={input.message} onChange={handleChange} className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white" rows={4} placeholder="Your Comment" />
             {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
           </div>
-
-        
           <div className="mb-4">
-            <label htmlFor="date" className="block text-sm font-medium mb-1">Date</label>
-            <input
-              id="date"
-              type="date"
-              value={input.date}
-              onChange={handleChange}
-              className="w-full p-2 rounded bg-gray-800 border-gray-600 text-white placeholder-white accent-white"
-             
-            />
+            <label htmlFor="date" className="block text-sm  font-medium mb-1">Date</label>
+            <input id="date" type="date" value={input.date} onChange={handleChange} className="w-full p-2 rounded bg-gray-800 border-gray-600 text-white placeholder-white accent-white" />
             {errors.date && <p className="text-sm text-red-500">{errors.date}</p>}
-          </div>
-
-         
+          </div>  
           <div className="mb-4">
             <label htmlFor="rating" className="block text-sm font-medium mb-1">Rating</label>
-            <select
-              id="rating"
-              value={input.rating}
-              onChange={handleChange}
-              className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white"
-            >
+            <select id="rating" value={input.rating} onChange={handleChange} className="w-full p-2 rounded bg-gray-800 border border-gray-600 text-white">
               <option value="">Select Rating</option>
               {[1, 2, 3, 4, 5].map(num => (
                 <option key={num} value={num}>{num}</option>
@@ -129,27 +92,19 @@ const Review = () => {
             </select>
             {errors.rating && <p className="text-sm text-red-500">{errors.rating}</p>}
           </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 mt-2 bg-pink-600 hover:bg-pink-700 text-white rounded text-base font-semibold transition"
-          >
+          <button type="submit"className="w-full py-3 mt-2 bg-pink-600 hover:bg-pink-700 text-white rounded text-base font-semibold transition" >
             {isUpdate ? "Update" : "Submit"}
           </button>
-        </form>
-
-      
+        </form>      
         {submittedData.length > 0 && (
           <div className="w-full flex-1 max-h-[480px] overflow-y-auto pr-2">
             {submittedData.map((review, index) => (
               <div
                 key={index}
-                className="bg-[#1E1E2F] border border-purple-600 rounded-xl text-white p-4 mb-4 shadow-md max-w-sm mx-auto"
-              >
+                className="bg-[#1E1E2F] border border-purple-600 rounded-xl text-white p-4 mb-4 shadow-md max-w-sm mx-auto" >
                 <h3 className="text-center text-lg font-bold mb-3 tracking-wider">
                   <span className="text-yellow-400">Clients</span> Feedback
                 </h3>
-
                 <div className="text-center">
                   <p className="font-bold text-base text-white mb-1">{review.name}</p>
                   <p className="italic text-gray-300 text-sm mb-2">“{review.message}”</p>
@@ -158,19 +113,10 @@ const Review = () => {
                     {"⭐".repeat(Number(review.rating))}
                   </div>
                 </div>
-
                 <div className="flex justify-center gap-6 mt-4">
-                  <button
-                    onClick={() => handleEdit(index)}
-                    className="px-5 py-2 text-base bg-yellow-500 hover:bg-yellow-600 rounded-md shadow-md transition"
-                  >
-                    Edit
+                  <button onClick={() => handleEdit(index)} className="px-5 py-2 text-base bg-yellow-500 hover:bg-yellow-600 rounded-md shadow-md transition"> Edit
                   </button>
-                  <button
-                    onClick={() => handleDelete(index)}
-                    className="px-5 py-2 text-base bg-red-500 hover:bg-red-600 rounded-md shadow-md transition"
-                  >
-                    Delete
+                  <button onClick={() => handleDelete(index)} className="px-5 py-2 text-base bg-red-500 hover:bg-red-600 rounded-md shadow-md transition">  Delete
                   </button>
                 </div>
               </div>
